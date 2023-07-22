@@ -3,7 +3,12 @@
 var bookmark =document.getElementById('name')
 var siteUrl =document.getElementById('url')
 var tbody= document.getElementById('tbody')
+var urltrueicon= document.getElementById('urltrueicon')
+var nametrueicon= document.getElementById('nametrueicon')
+var urlfalseicon= document.getElementById('urlfalseicon')
+var namefalseicon= document.getElementById('namefalseicon')
 var myData=[]
+
 /**************************************************************************************** */
 if(localStorage.getItem('products') !=null){
    
@@ -50,10 +55,11 @@ function add(){
         }
         myData.push(application)
         localStorage.setItem('products',JSON.stringify(myData))
+        deletestyle()
         display(JSON.parse(localStorage.getItem('products')))
     
         
-    
+        
         clear()
     }else{swal(`Site Name or Url is not valid, Please follow the rules below :
 
@@ -70,5 +76,37 @@ function Delete(index){
     localStorage.setItem('products',JSON.stringify(myData))
     display(myData)
 }
+function checklength(input){
+    if(input.length>3){
+        nametrueicon.style.display ='block'
+         bookmark.style.boxShadow= '0 0 0 0.25rem green';
+         namefalseicon.style.display='none'
+    }else if (input.length==1) {
+        namefalseicon.style.display ='block'
+        bookmark.style.boxShadow= '0 0 0 0.25rem red';
+        nametrueicon.style.display ='none'
+    } 
 
+}
+
+function urlstyle(url){
+    if(isUrlValid(url)){
+        urltrueicon.style.display ='block'
+        siteUrl.style.boxShadow= '0 0 0 0.25rem green';
+         urlfalseicon.style.display='none'
+    }else  {
+        urlfalseicon.style.display ='block'
+        siteUrl.style.boxShadow= '0 0 0 0.25rem red';
+        urltrueicon.style.display ='none'
+    } 
+
+}
+function deletestyle(){
+    namefalseicon.style.display='none'
+    nametrueicon.style.display ='none'
+    urlfalseicon.style.display ='none'
+    urltrueicon.style.display ='none'
+    bookmark.style.boxShadow= 'none';
+    siteUrl.style.boxShadow= 'none';
+}
 

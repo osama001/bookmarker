@@ -32,9 +32,18 @@
         </section>
         <section>
             <i class="fa-solid fa-book"></i>  <label for="name" class="pb-2">site name</label>
-            <input type="text" class="form-control mb-3 " id="name" placeholder="bookmark name">
+            <div class="outer position-relative">
+                <input type="text" class="form-control mb-3 position-relative"  oninput="checklength(this.value)" id="name"  placeholder="bookmark name">
+                <i class="fa-solid fa-check  oninput" id="nametrueicon"></i>
+                <i class="fa-solid fa-x oninput"  id="namefalseicon"></i>
+             </div>
+            
             <i class="fa-solid fa-link pe-2"></i>  <label for="name" class="pb-2">Site URL</label>
-            <input type="text" class="form-control mb-3" id="url" placeholder="bookmark name">
+             <div class="outer position-relative">
+                <input type="text" class="form-control mb-3 " id="url" oninput="urlstyle(this.value)" placeholder="bookmark name">
+                <i class="fa-solid fa-check  oninput" id="urltrueicon"></i>
+                <i class="fa-solid fa-x oninput" id="urlfalseicon"></i>
+             </div>
         </section>
         <button class=" submit d-block mx-auto fs-4 px-4" onclick="add()"> submit</button>
 
